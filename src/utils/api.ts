@@ -25,6 +25,16 @@ class MainApi {
       method: "DELETE",
     }).then((res) => this._checkResponse<SeminarType>(res));
   }
+
+  public editSeminar(
+    id: string,
+    updatedData: SeminarType
+  ): Promise<SeminarType> {
+    return fetch(`${this.baseUrl}${id}`, {
+      method: "PUT", 
+      body: JSON.stringify(updatedData), 
+    }).then((res) => this._checkResponse<SeminarType>(res));
+  }
 }
 
 export const mainApi = new MainApi({
